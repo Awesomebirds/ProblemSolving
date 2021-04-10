@@ -1,7 +1,6 @@
 interface Sudoku {
   readonly MAX_ROW: number;
   readonly MAX_COLUMN: number;
-  readonly table: Array<number>;
   getRowNumber(index: number): number;
   getColumNumber(index: number): number;
   getGroupNumber(row: number, column: number): number;
@@ -11,20 +10,7 @@ class SudokuImpl implements Sudoku {
   readonly MAX_ROW = 9;
   readonly MAX_COLUMN = 9;
 
-  private _table = [];
-  public get table() {
-    return this._table;
-  }
-
-  private initTable() {
-    for (let i = 0; i <= this.MAX_COLUMN * this.MAX_ROW; i++) {
-      this._table.push(i);
-    }
-  }
-
-  constructor() {
-    this.initTable();
-  }
+  constructor() {}
 
   getRowNumber(index: number): number {
     //행을 구하는 함수
