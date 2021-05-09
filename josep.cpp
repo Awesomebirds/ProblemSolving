@@ -20,6 +20,27 @@ vector<Player> getDeadPlayersList(int n, int m, const vector<Player>& players){
   //아직 게임에서 제외되지 않은 플레이어들의 리스트
   queue<Player> playerQueue;
 
+  for(int i = 0; i < n; i++){
+    playerQueue.push(players[i]); // 1 2 3 4 5 6 7
+  }
+
+  for(int i = 0; i < n; i++){
+    //(m-1)명의 사람을 건너뛴다.
+    int jump = 1 + (m - 1) % playerQueue.size();
+    for (int j = 0; j < jump - 1; j++){
+      Player p = playerQueue.front();
+      playerQueue.pop();
+      playerQueue.push(p); //맨 앞의 원소를 뒤로 보냄
+    }
+
+    //m번째 사람은 게임에서 제외한다.
+    Player dead = playerQueue.front();
+    playerQueue.pop();
+
+    //제외 리스트에 추가한다.
+    deadPlayers.push_back(dead);
+  }
+
   return deadPlayers;
 }
 
