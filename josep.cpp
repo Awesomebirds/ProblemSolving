@@ -25,32 +25,33 @@ vector<Player> getDeadPlayersList(int n, int m, const vector<Player>& players){
 
 void process(int caseIndex) {
   int n, m;
-  cin >> n >> m;
+  cin >> n >> m; //사람의 수, M입력받음
 
-  vector<Player> players;
+  vector<Player> players; //인덱스를 가지고 있는 사람들의 벡터 생성
   for(int i = 0; i < n; i++){
-    players.push_back(Player(i + 1));
+    players.push_back(Player(i + 1)); //사람 수만큼 1~n까지 벡터 생성함
   }
 
   vector<Player> deadPlayers = getDeadPlayersList(n, m, players);
 
   for(int i = 0; i < n; i++){
     if(i > 0) {
-      cout << " ";
+      cout << " "; //공백출력
     }
 
     Player p = deadPlayers[i];
-    cout << p.index;
+    cout << p.index; //인덱스 출력
   }
 
-  cout << endl;
+  cout << endl; //줄바꿈
 }
 
 int main() {
-  int caseSize;
-  cin >> caseSize;
+  int caseSize; //테스트케이스의 횟수
+  cin >> caseSize; //사이즈 입력받음
 
   for(int caseIndex = 1; caseIndex <= caseSize; caseIndex++){
+    //테스트사이즈만큼 반복
     process(caseIndex);
   }
 
