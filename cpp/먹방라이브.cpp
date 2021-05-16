@@ -34,7 +34,7 @@ int solve(queue<Dish> dishes, long long k) {
     }
   }
 
-  return dishes.front().index;
+  return dishes.front().index; //중단되었을 때 가장 앞의 인덱스를 리턴함
 }
 
 int main() {
