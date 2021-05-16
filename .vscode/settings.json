@@ -3,6 +3,7 @@
     "ios": "cpp",
     "algorithm": "cpp",
     "vector": "cpp",
-    "iterator": "cpp"
+    "iterator": "cpp",
+    "map": "cpp"
   }
 }
