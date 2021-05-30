@@ -4,6 +4,7 @@
     "algorithm": "cpp",
     "vector": "cpp",
     "iterator": "cpp",
-    "map": "cpp"
+    "map": "cpp",
+    "queue": "cpp"
   }
 }
