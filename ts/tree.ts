@@ -22,10 +22,29 @@
 
     preorderReadTree = (node?: Node<T>) => {
       const currentNode = node || this.node;
-      console.log(currentNode.body);
 
-      currentNode.left && this.preorderReadTree(currentNode.left);
-      currentNode.right && this.preorderReadTree(currentNode.right);
+      console.log(currentNode.body); //D
+
+      currentNode.left && this.preorderReadTree(currentNode.left); //L
+      currentNode.right && this.preorderReadTree(currentNode.right); //R
+    };
+
+    inorderReadTree = (node?: Node<T>) => {
+      const currentNode = node || this.node;
+
+      currentNode.left && this.inorderReadTree(currentNode.left); //L
+
+      console.log(currentNode.body); //D
+
+      currentNode.right && this.inorderReadTree(currentNode.right); //R
+    };
+
+    postorderReadTree = (node?: Node<T>) => {
+      const currentNode = node || this.node;
+
+      currentNode.left && this.postorderReadTree(currentNode.left); //L
+      currentNode.right && this.postorderReadTree(currentNode.right); //R
+      console.log(currentNode.body); //D
     };
 
     addNode = (body: string) => {};
@@ -83,5 +102,5 @@
   };
 
   myTree.editTree(myNode);
-  myTree.preorderReadTree();
+  myTree.postorderReadTree();
 }
