@@ -44,13 +44,4 @@
       this._size--;
     };
   }
-
-  const fibo = new Queue<number>();
-  fibo.push(0);
-  fibo.push(1);
-  for (let i = 0; i < 20; i++) {
-    console.log(`${i + 1}: ${fibo.front()}`);
-    fibo.push(fibo.front() + fibo.back());
-    fibo.pop();
-  }
 }

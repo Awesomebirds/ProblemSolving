@@ -42,6 +42,23 @@
     };
 
     //깊이 우선 탐색
+    dfs = (nodeNum: number): void => {
+      if (this._nodeSize == 0) return; //노드가 없으면 중단
+
+      console.log(nodeNum); //방문한 노드 출력
+      nodeNum--; //노드 넘버와 인덱스를 맞추기 위해 1을 뺌
+      this.visited[nodeNum] = true; //방문한 노드를 저장함
+
+      for (let i = 0; i < this._nodeSize; i++) {
+        if (this._adjustMatrix[nodeNum][i] && !this.visited[i]) {
+          //간선이 있고, 방문하지 않은 노드일 때
+          this.dfs(i + 1);
+        }
+      }
+    };
+
+    //너비 우선 탐색
+    queue = [];
     bfs = (nodeNum: number): void => {
       if (this._nodeSize == 0) return; //노드가 없으면 중단
 
@@ -52,8 +69,14 @@
       for (let i = 0; i < this._nodeSize; i++) {
         if (this._adjustMatrix[nodeNum][i] && !this.visited[i]) {
           //간선이 있고, 방문하지 않은 노드일 때
-          this.bfs(i + 1);
+          this.queue.push(i + 1); //enqueue
+          this.visited[i] = true; //큐에 넣은 노드도 방문한 것으로 처리
         }
+      }
+
+      if (this.queue.length > 0) {
+        //queue에 방문해야 할 노드가 남아있다면
+        this.bfs(this.queue.shift());
       }
     };
   }
@@ -71,6 +94,5 @@
   myGraph.addEdge(6, 8);
   myGraph.addEdge(7, 8);
 
-  console.log(myGraph.getAdjustMatrix());
   myGraph.bfs(1);
 }
