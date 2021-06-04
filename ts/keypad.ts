@@ -18,6 +18,15 @@
       this.handType = handType;
     }
 
+    private difference(a: number[], b: number[]) {
+      if (a.length < 2 || b.length < 2) {
+        throw new Error("인덱스가 잘못되었습니다.");
+      }
+      let result: number;
+      result = Math.abs(a[0] - b[0]) + Math.abs(a[1] - b[1]);
+      return result;
+    }
+
     private pressNumber = (number: number): "L" | "R" => {
       let result: "L" | "R";
       let index: number[];
@@ -38,7 +47,17 @@
         result = "R";
       } else {
         //가운데 줄
+        const leftDifference = this.difference(this.state.left, index);
+        const rightDifference = this.difference(this.state.right, index);
+        if (leftDifference > rightDifference) {
+          //오른쪽이 더 가까울 때
+        } else if (leftDifference < rightDifference) {
+          //왼쪽이 더 가까울 때
+        } else {
+          //같을 때
+        }
       }
+
       return result;
     };
 
