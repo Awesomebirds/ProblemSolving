@@ -27,6 +27,16 @@
       return result;
     }
 
+    private press = (hand: "L" | "R", index: number[]) => {
+      if (hand === "L") {
+        this.state.left = index;
+        return "L";
+      } else {
+        this.state.right = index;
+        return "R";
+      }
+    };
+
     private pressNumber = (number: number): "L" | "R" => {
       let result: "L" | "R";
       let index: number[];
@@ -39,22 +49,27 @@
 
       if (index[1] === 0) {
         //왼쪽 줄
-        this.state.left = index;
-        result = "L";
+        result = this.press("L", index);
       } else if (index[1] === 2) {
         //오른쪽 줄
-        this.state.right = index;
-        result = "R";
+        result = this.press("R", index);
       } else {
         //가운데 줄
         const leftDifference = this.difference(this.state.left, index);
         const rightDifference = this.difference(this.state.right, index);
-        if (leftDifference > rightDifference) {
-          //오른쪽이 더 가까울 때
-        } else if (leftDifference < rightDifference) {
+        if (leftDifference < rightDifference) {
           //왼쪽이 더 가까울 때
+          result = this.press("L", index);
+        } else if (leftDifference > rightDifference) {
+          //오른쪽이 더 가까울 때
+          result = this.press("R", index);
         } else {
           //같을 때
+          if (this.handType === "left") {
+            result = this.press("L", index);
+          } else {
+            result = this.press("R", index);
+          }
         }
       }
 
@@ -69,4 +84,8 @@
       return answer;
     };
   }
+  const myKeyPad = new KeyPad("left");
+  const input = [7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2];
+  const answer = myKeyPad.pressNumbers(input);
+  console.log(answer);
 }
