@@ -84,8 +84,10 @@
       return answer;
     };
   }
-  const myKeyPad = new KeyPad("left");
-  const input = [7, 0, 8, 2, 8, 3, 1, 5, 7, 6, 2];
-  const answer = myKeyPad.pressNumbers(input);
-  console.log(answer);
+
+  function solution(numbers, hand) {
+    const myKeyPad = new KeyPad(hand);
+    const answer = myKeyPad.pressNumbers(numbers);
+    return answer;
+  }
 }
