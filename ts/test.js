@@ -1,7 +1,8 @@
-function solution(maps) {
-  var answer = 0;
+const readArray = (array) => {
+  array.forEach((el) => {
+    console.log(el);
+  });
+  array.
+};
 
-  return answer;
-}
-
-console.log(solution(1000000000));
+readArray([1, 2, 3, 4, 5].);
